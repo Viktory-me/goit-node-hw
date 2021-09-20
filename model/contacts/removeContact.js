@@ -12,6 +12,7 @@ async function removeContact(contactId) {
     }
     contacts.splice(idx, 1);
     await updateAllContacts(contacts);
+    return contacts;
   } catch (error) {
     console.log(error);
   }
