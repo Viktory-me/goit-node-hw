@@ -1,9 +1,9 @@
 const updateAllContacts = require('./updateAllContacts');
-const getAllContacts = require('./getAllContacts');
+const listContacts = require('./listContacts');
 
 async function removeContact(contactId) {
   try {
-    const contacts = await getAllContacts();
+    const contacts = await listContacts();
     const idx = contacts.findIndex(
       (contact) => contact.id.toString() === contactId
     );

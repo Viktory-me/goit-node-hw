@@ -1,11 +1,5 @@
-const getAllContacts = require('./getAllContacts');
+const contacts = require('./contacts.json');
 
-async function listContacts() {
-  try {
-    const contacts = await getAllContacts();
-    console.table(contacts);
-  } catch (error) {
-    console.log(error);
-  }
-}
+const listContacts = async () => contacts;
+
 module.exports = listContacts;
