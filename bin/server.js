@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-const appUser = require('../app');
+const app = require('../app');
 
-const { DB_HOST, PORT = 3000 } = process.env;
+const { DB_HOST, PORT = 5000 } = process.env;
 
 mongoose
   .connect(DB_HOST, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    appUser.listen(PORT);
+    app.listen(PORT);
     console.log('Database connection successful');
   })
   .catch((error) => {
