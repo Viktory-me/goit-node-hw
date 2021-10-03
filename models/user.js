@@ -1,5 +1,9 @@
 const { Schema, model } = require('mongoose');
 const Joi = require('joi');
+// const jwt = require('jsonwebtoken');
+
+// const { SECRET_KEY } = process.env;
+
 const userSchema = Schema(
   {
     password: {
@@ -21,8 +25,14 @@ const userSchema = Schema(
       default: null,
     },
   },
-  { versionKey: false, timestamp: true }
+  { versionKey: false, timestamps: true }
 );
+// userSchema.methods.createToken = function () {
+//   const payload = {
+//     _id: this._id,
+//   };
+//   return jwt.sign(payload, SECRET_KEY);
+// };
 const joiUserSchema = Joi.object({
   password: Joi.string().required(),
   email: Joi.string().required(),
