@@ -4,7 +4,6 @@ const cors = require('cors');
 
 const contactsRouter = require('./routes/api/contacts');
 const authRouter = require('./routes/api/auth');
-const userRouter = require('./routes/api/users');
 
 const app = express();
 
@@ -16,15 +15,7 @@ app.use(express.json());
 app.use(express.static('./public'));
 
 app.use('/api/contacts', contactsRouter);
-app.use('/api/auth', authRouter);
-app.use('./api/users', userRouter);
-
-// const { uploadMiddleware } = require('./middlewares');
-
-// app.post('/api/users', uploadMiddleware.single('image'), async (req, res) => {
-//   console.log(req.body);
-//   console.log(req.file);
-// });
+app.use('/api/users', authRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });
