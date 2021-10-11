@@ -1,8 +1,6 @@
 const { Schema, model } = require('mongoose');
 const Joi = require('joi');
-// const jwt = require('jsonwebtoken');
-
-// const { SECRET_KEY } = process.env;
+const gr = require('gravatar');
 
 const userSchema = Schema(
   {
@@ -24,15 +22,16 @@ const userSchema = Schema(
       type: String,
       default: null,
     },
+    avatar: {
+      type: String,
+      default: function () {
+        return gr.url(this.email, { s: '250' }, true);
+      },
+    },
   },
   { versionKey: false, timestamps: true }
 );
-// userSchema.methods.createToken = function () {
-//   const payload = {
-//     _id: this._id,
-//   };
-//   return jwt.sign(payload, SECRET_KEY);
-// };
+
 const joiUserSchema = Joi.object({
   password: Joi.string().required(),
   email: Joi.string().required(),

@@ -1,2 +1,3 @@
 const sendSuccessRes = require('./sendSuccessRes');
-module.exports = { sendSuccessRes };
+const createFolderIsNotExist = require('./create-folder');
+module.exports = { sendSuccessRes, createFolderIsNotExist };
