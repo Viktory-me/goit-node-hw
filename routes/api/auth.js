@@ -24,5 +24,7 @@ router.patch(
   upload.single('avatar'),
   controllerWrapper(ctrl.avatars)
 );
+router.get('/verify/:verificationToken', controllerWrapper(ctrl.verify));
+router.post('/verify', controllerWrapper(ctrl.reSend));
 
 module.exports = router;
